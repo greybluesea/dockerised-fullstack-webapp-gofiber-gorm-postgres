@@ -20,7 +20,8 @@ func homeHandler(c *fiber.Ctx) error {
 	facts := []models.Fact{}
 	database.DB.Find(&facts)
 
-	return c.Status(200).JSON(facts)
+	// 	return c.Status(200).JSON(facts)
+	return c.Render("index", fiber.Map{"Title": "Fun Facts", "Subtitle": "Dockerised Fullstack WebApp(GoFiber + GORM + Postgres) - learned from Div Rhino"})
 }
 
 func createHandler(c *fiber.Ctx) error {
