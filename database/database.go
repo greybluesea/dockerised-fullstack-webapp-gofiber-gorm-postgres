@@ -5,7 +5,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/greybluesea/dockerised-rest-api-gofiber-postgres/models"
+	"github.com/greybluesea/dockerised-fullstack-webapp-gofiber-gorm-postgres/models"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"

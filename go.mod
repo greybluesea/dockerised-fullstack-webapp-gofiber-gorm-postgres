@@ -1,4 +1,4 @@
-module github.com/greybluesea/dockerised-rest-api-gofiber-postgres
+module github.com/greybluesea/dockerised-fullstack-webapp-gofiber-gorm-postgres
 
 go 1.21.1
 

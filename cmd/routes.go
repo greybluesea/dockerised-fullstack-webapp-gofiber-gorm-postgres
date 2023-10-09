@@ -2,8 +2,8 @@ package main
 
 import (
 	"github.com/gofiber/fiber/v2"
-	"github.com/greybluesea/dockerised-rest-api-gofiber-postgres/database"
-	"github.com/greybluesea/dockerised-rest-api-gofiber-postgres/models"
+	"github.com/greybluesea/dockerised-fullstack-webapp-gofiber-gorm-postgres/database"
+	"github.com/greybluesea/dockerised-fullstack-webapp-gofiber-gorm-postgres/models"
 )
 
 func setupRoutes(app *fiber.App) {
