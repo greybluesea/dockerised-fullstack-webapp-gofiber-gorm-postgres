@@ -7,17 +7,25 @@ import (
 )
 
 func setupRoutes(app *fiber.App) {
-	app.Get("/hello", homeHandler)
+	app.Get("/hello", helloHandler)
+	app.Get("/", homeHandler)
 	app.Post("/create", createHandler)
 }
 
-func homeHandler(c *fiber.Ctx) error {
+func helloHandler(c *fiber.Ctx) error {
 	return c.SendString("Hello, World! Tony here 👋!!")
+}
+func homeHandler(c *fiber.Ctx) error {
+
+	facts := []models.Fact{}
+	database.DB.Find(&facts)
+
+	return c.Status(200).JSON(facts)
 }
 
 func createHandler(c *fiber.Ctx) error {
 	fact := new(models.Fact)
-	if err := c.BodyParser(fact); err != nil {
+	if err := c.BodyParser(&fact); err != nil {
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
 			"message": err.Error(),
 		})
