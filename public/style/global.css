@@ -448,16 +448,9 @@ main {
 footer {
   position: fixed;
   bottom: 5dvh;
-  /* left: 0;
-  right: 0; */
   width: 100%;
-  /*  padding-left: auto;
-  padding-right: auto;
-  text-align: center; */
 }
 
 footer h4 {
   text-align: center;
-  /*   margin-left: auto;
-  margin-right: auto; */
 }
