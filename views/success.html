@@ -1,0 +1,24 @@
+<head>
+  <title>{{.Title}}</title>
+  <meta http-equiv="refresh" content="5;url=/" />
+  <script>
+    var countdown = 5; // Initial countdown value in seconds
+
+    function updateCountdown() {
+      document.getElementById("countdown").innerText = countdown;
+      countdown--;
+
+      if (countdown < 0) {
+        window.location.href = "/"; // Redirect to the home page after countdown
+      }
+    }
+    // Update the countdown every second
+    setInterval(updateCountdown, 1000);
+  </script>
+</head>
+
+<p>Redirecting to the home page in <span id="countdown">5</span> seconds...</p>
+
+<div class="add-more">
+  <p><a href="/newfact">Add more</a></p>
+</div>

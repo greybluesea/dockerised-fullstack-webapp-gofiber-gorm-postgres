@@ -8,15 +8,12 @@ import (
 
 func main() {
 	database.ConnectDB()
-
 	engine := html.New("./views", ".html")
-
 	app := fiber.New(fiber.Config{
 		Views:       engine,
 		ViewsLayout: "layout",
 	})
-
 	setupRoutes(app)
-
+	app.Static("/", "./public")
 	app.Listen(":3000")
 }
