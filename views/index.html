@@ -4,6 +4,7 @@
     <div class="question-wrapper">
       <p class="question">{{ .Question }}</p>
       <div class="btn-wrapper">
+        <a href="/edit/{{.ID }}" id="edit-btn" class="edit-btn">edit</a>
         <form action="/delete" method="post">
           <input type="hidden" name="ID" value="{{.ID}}" />
           <button id="delete-btn" class="delete-btn" type="submit">
@@ -20,7 +21,7 @@
   {{ end }} {{else}}
   <div class="no-facts">
     <p>No facts yet.</p>
-    <p><a href="/newfact">Add New</a></p>
+    <!--  <p><a href="/newfact">Add New</a></p> -->
   </div>
   {{end}}
 </div>
