@@ -9,7 +9,7 @@ import (
 )
 
 func setupRoutes(app *fiber.App) {
-	app.Get("/hello", helloHandler)
+	//	app.Get("/hello", helloHandler)
 	app.Get("/", homeHandler)
 	app.Get("/newfact", newfactHandler)
 	app.Post("/create", createHandler)
@@ -18,18 +18,13 @@ func setupRoutes(app *fiber.App) {
 	app.Post("/edit/:id", updateHandler)
 }
 
-func helloHandler(c *fiber.Ctx) error {
-	return c.SendString("Hello, World! Tony here 👋!!")
-}
 func homeHandler(c *fiber.Ctx) error {
 	facts := []models.Fact{}
 	result := database.DB.Find(&facts)
 	//	fmt.Println(reflect.TypeOf(facts[0].ID))
 	// 	return c.Status(200).JSON(facts)
-
 	fmt.Println(result)
-	fmt.Println(facts)
-
+	//fmt.Println(facts)
 	return c.Render("index", fiber.Map{"Title": "Fun Facts", "Subtitle": "Dockerised Fullstack WebApp(GoFiber + GORM + Postgres) - learned from Div Rhino", "Facts": facts})
 }
 
@@ -104,3 +99,7 @@ func deleteHandler(c *fiber.Ctx) error {
 	c.Redirect("/")
 	return nil
 }
+
+/* func helloHandler(c *fiber.Ctx) error {
+	return c.SendString("Hello, World! Tony here 👋!!")
+} */
