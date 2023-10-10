@@ -11,6 +11,7 @@ func setupRoutes(app *fiber.App) {
 	app.Get("/", homeHandler)
 	app.Get("/newfact", newfactHandler)
 	app.Post("/create", createHandler)
+	app.Post("/delete", deleteHandler)
 }
 
 func helloHandler(c *fiber.Ctx) error {
@@ -43,4 +44,16 @@ func successHandler(c *fiber.Ctx) error {
 	return c.Render("success", fiber.Map{
 		"Title": "Fact added successfully",
 	})
+}
+
+func deleteHandler(c *fiber.Ctx) error {
+	// Retrieve the fact ID from the POST request
+	factID := c.FormValue("ID")
+	result := database.DB.Delete(&models.Fact{}, factID)
+	if result.Error != nil {
+		return result.Error
+	}
+	// Redirect to the home page after deletion
+	c.Redirect("/")
+	return nil
 }
