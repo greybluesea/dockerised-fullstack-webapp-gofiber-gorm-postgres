@@ -15,7 +15,7 @@ func setupRoutes(app *fiber.App) {
 	app.Post("/create", createHandler)
 	app.Post("/delete", deleteHandler)
 	app.Get("/edit/:id", editHandler)
-	app.Post("/update/:id", updateHandler)
+	app.Post("/edit/:id", updateHandler)
 }
 
 func helloHandler(c *fiber.Ctx) error {
@@ -34,39 +34,7 @@ func homeHandler(c *fiber.Ctx) error {
 }
 
 func newfactHandler(c *fiber.Ctx) error {
-	return c.Render("newfact", fiber.Map{"Title": "New Fact", "Subtitle": "Add an interesting fact"})
-}
-
-func editHandler(c *fiber.Ctx) error {
-	fact := &models.Fact{}
-	id := c.Params("id")
-
-	result := database.DB.Where("id = ?", id).First(&fact)
-	if result.Error != nil {
-		return result.Error
-		//return NotFound(c)
-	}
-
-	return c.Render("edit", fiber.Map{
-		"Title": "Edit Fact",
-		"Fact":  fact,
-	})
-}
-
-func updateHandler(c *fiber.Ctx) error {
-	fact := &models.Fact{}
-	id := c.Params("id")
-
-	if err := c.BodyParser(fact); err != nil {
-		return c.Status(fiber.StatusServiceUnavailable).SendString(err.Error())
-	}
-
-	result := database.DB.Model(fact).Where("id = ?", id).Updates(fact)
-	if result.Error != nil {
-		return editHandler(c)
-	}
-
-	return c.Redirect("/")
+	return c.Render("newfact", fiber.Map{"Title": "New Fact"})
 }
 
 func createHandler(c *fiber.Ctx) error {
@@ -92,6 +60,39 @@ func createHandler(c *fiber.Ctx) error {
 		"Title": "Fact added successfully",
 	})
 } */
+
+func editHandler(c *fiber.Ctx) error {
+	fact := &models.Fact{}
+	id := c.Params("id")
+
+	result := database.DB.Model(fact).Where("ID = ?", id).First(fact)
+	if result.Error != nil {
+		return result.Error
+		//return NotFound(c)
+	}
+
+	return c.Render("edit", fiber.Map{
+		"Title": "Edit Fact",
+		"Fact":  fact,
+	})
+}
+
+func updateHandler(c *fiber.Ctx) error {
+	fact := &models.Fact{}
+	id := c.Params("id")
+
+	if err := c.BodyParser(fact); err != nil {
+		return c.Status(fiber.StatusServiceUnavailable).SendString(err.Error())
+	}
+
+	result := database.DB.Model(fact).Where("id = ?", id).Updates(fact)
+	if result.Error != nil {
+		// return result.Error
+		return editHandler(c)
+	}
+
+	return c.Redirect("/")
+}
 
 func deleteHandler(c *fiber.Ctx) error {
 	factID := c.FormValue("ID")

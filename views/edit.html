@@ -1,11 +1,10 @@
 <div class="container">
   {{if .Fact}}
-  <form id="form-update-fact" method="POST" action="/update/{{ .Fact.ID }}">
+  <form id="form-update-fact" method="POST">
     <label for="question">
       <span>Question</span>
       <input type="text" name="question" value="{{ .Fact.Question }}" />
     </label>
-
     <label for="answer">
       <span>Answer</span>
       <input type="text" name="answer" value="{{ .Fact.Answer }}" />
