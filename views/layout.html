@@ -2,7 +2,8 @@
 <head>
     <title>{{.Title}} - {{.Subtitle}}</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link rel="stylesheet" href="/style/global.css">
+    <link rel="stylesheet" href="/style/global.css?v=1">
+    <!-- <link rel="stylesheet" href="/style/global.css"> -->
     <link rel="icon" type="image/png" href="/image/funfacts.png" >
 </head>
 <body>
@@ -11,6 +12,7 @@
         <h1>{{.Title}}</h1>
         <h4>{{.Subtitle}}</h4>
         {{embed}}
+       {{template "footer" .}}
     </div>
-</body>
+</body> 
 </html>

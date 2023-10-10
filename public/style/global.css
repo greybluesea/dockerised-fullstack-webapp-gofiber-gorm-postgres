@@ -300,6 +300,7 @@ form input[type="submit"] {
   align-items: center;
   max-width: 960px;
   width: 100%;
+  min-height: 100%;
   margin: 0 auto;
   margin-bottom: 80px;
   padding-left: 15px;
@@ -438,4 +439,25 @@ form input[type="submit"] {
   line-height: 20px;
   background-color: #ffcccc;
   border-radius: 5px;
+}
+
+main {
+  z-index: 5;
+}
+
+footer {
+  position: fixed;
+  bottom: 5dvh;
+  /* left: 0;
+  right: 0; */
+  width: 100%;
+  /*  padding-left: auto;
+  padding-right: auto;
+  text-align: center; */
+}
+
+footer h4 {
+  text-align: center;
+  /*   margin-left: auto;
+  margin-right: auto; */
 }

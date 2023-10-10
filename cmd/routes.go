@@ -25,7 +25,7 @@ func homeHandler(c *fiber.Ctx) error {
 	// 	return c.Status(200).JSON(facts)
 	fmt.Println(result)
 	//fmt.Println(facts)
-	return c.Render("index", fiber.Map{"Title": "Fun Facts", "Subtitle": "Dockerised Fullstack WebApp(GoFiber + GORM + Postgres) - learned from Div Rhino", "Facts": facts})
+	return c.Render("index", fiber.Map{"Title": "Fun Facts", "Subtitle": "Dockerised Fullstack WebApp(GoFiber + GORM + Postgres)", "Facts": facts})
 }
 
 func newfactHandler(c *fiber.Ctx) error {
