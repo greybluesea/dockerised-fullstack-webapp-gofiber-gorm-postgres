@@ -13,9 +13,7 @@
       answer.style.display = answer.style.display === "none" ? "block" : "none";
     });
   }
-})();
-
-/* // Check if event listeners are already attached
+  /* // Check if event listeners are already attached
 if (!toggleBtns[0].hasEventListener) {
   for (const btn of toggleBtns) {
     btn.hasEventListener = true; // Mark that the event listener is added
@@ -25,3 +23,4 @@ if (!toggleBtns[0].hasEventListener) {
     });
   }
 } */
+})();
