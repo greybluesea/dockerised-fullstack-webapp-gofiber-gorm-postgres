@@ -14,3 +14,14 @@
     });
   }
 })();
+
+/* // Check if event listeners are already attached
+if (!toggleBtns[0].hasEventListener) {
+  for (const btn of toggleBtns) {
+    btn.hasEventListener = true; // Mark that the event listener is added
+    btn.addEventListener("click", (e) => {
+      const answer = e.target.parentElement.parentElement.nextElementSibling;
+      answer.style.display = answer.style.display === "none" ? "block" : "none";
+    });
+  }
+} */
